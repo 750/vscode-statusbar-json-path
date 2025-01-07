@@ -125,6 +125,7 @@ function findEndQuote(text: string, i: number) {
     // Handle backtracking to find if this quote is escaped
     if (text[i] === "\\") {
       i += 2;
+      continue;
     }
 
     if (text[i] === '"') {
