@@ -1,15 +1,5 @@
-# StatusBar JSONPath
+Fork of https://github.com/richie5um/vscode-statusbar-json-path
 
-Shows the path to the selected JSON Property in the StatusBar.
-
-![JSONPath](./resources/jsonpath.png)
-
-⚠️ Only works for registered JSON files. (json, jsonc, asl, ssm-json)
-
-If you want to alias a JSON like file, add this to your config.json
-
-```json
-"files.associations": {
-    "*.myjson": "json"
-}
-```
+Improvements:
+* https://github.com/richie5um/vscode-statusbar-json-path/issues/30
+* Triggering command will copy jsonpath even if extension is not activated (when open file is not `.json`). Useful when you have a very large json: just change it to `.txt` to disable syntax higlighting for better performance
