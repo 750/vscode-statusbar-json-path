@@ -18,6 +18,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.statusBarJSONPath", async () => {
+      updateStatus(status, true)
       await vscode.env.clipboard.writeText(currentString);
     })
   );
@@ -25,14 +26,15 @@ export function activate(context: vscode.ExtensionContext) {
   updateStatus(status);
 }
 
-function updateStatus(status: vscode.StatusBarItem): void {
+function updateStatus(status: vscode.StatusBarItem, ignoreExtension: boolean = false): void {
   currentString = "";
 
   const editor = vscode.window.activeTextEditor;
   if (
     !editor ||
     !(
-      editor.document.languageId.toLowerCase() === "json" || //
+      ignoreExtension ||
+      editor.document.languageId.toLowerCase() === "json" ||
       editor.document.languageId.toLowerCase() === "jsonc" ||
       editor.document.languageId.toLowerCase() === "asl" ||
       editor.document.languageId.toLowerCase() === "ssm-json"
